@@ -1,3 +1,5 @@
+$('body').append($('<div id="test_chart" />'));
+
 /* Inspired by Lee Byron's test data generator. */
 function stream_layers(n, m, o) {
   if (arguments.length < 3) o = 0;
@@ -54,7 +56,7 @@ var area = d3.svg.area()
     .y0(function(d) { return h - d.y0 * h / my; })
     .y1(function(d) { return h - (d.y + d.y0) * h / my; });
 
-var vis = d3.select("#chart")
+var vis = d3.select("#test_chart")
   .append("svg")
     .attr("width", w)
     .attr("height", h);
