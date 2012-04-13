@@ -1,7 +1,7 @@
 var data; // a global
 
 d3.json("http://stampyday.pp.local:4567/by_month", function(json) {
-    data = json['days'];
+    data = json['months'];
     arr = Array(data.length);
     for (var key in data) {
       if (data.hasOwnProperty(key)) {
