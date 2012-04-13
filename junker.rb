@@ -19,7 +19,7 @@ require 'time'
 #   mailjunk:month:2012.04      set of row ids sent in April, 2012
 #   mailjunk:day:2012.04.01     set of row ids sent on April 1, 2012
 
-$redis = Redis.new
+$redis = Redis.new(:host => 'stampyday.pp.local')
 
 COLUMN = {
   type: 0,              timeLogged: 1,         timeQueued: 2,         timeImprinted: 3,
