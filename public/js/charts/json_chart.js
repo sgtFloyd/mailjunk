@@ -1,6 +1,6 @@
 var data; // a global
 
-d3.json("http://stampyday.pp.local:4567/by_day?month=2011.1&result=delivered", function(json) {
+d3.json("http://stampyday.pp.local:4567/by_day", function(json) {
     data = json['days'];
     arr = Array(data.length);
     for (var key in data) {
