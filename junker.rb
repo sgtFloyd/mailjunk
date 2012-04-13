@@ -70,9 +70,11 @@ end
 
 ARGV.each do |file|
   puts "Processing #{file}"
+  count = 0
   CSV.foreach(file) do |row|
     uid = uid(row)
     next unless process_type(uid, row) # skip header row
+    count +=1; puts "line ##{count}" if count % 1000 == 0
     process_time(uid, row)
     process_status(uid, row)
     process_domain(uid, row)
