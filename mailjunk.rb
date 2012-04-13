@@ -79,14 +79,13 @@ class Mailjunk
 
     def count_by(type, options={})
       if type.to_s == 'result'
-        ['bounced', 'delivered'].inject([]){|res, key|
-          res << {type => key, count => Mailjunk.count(options.merge(type => key))}
+        ['bounced', 'delivered'].inject({}){|res, key|
+          res[key] = Mailjunk.count(options.merge(type => key)); res
         }
       else
-        Mailjunk.indexed_keys(type).inject([]){|res, key|
-          count = Mailjunk.count(options.merge(type => key))
-          res << {type => key, :count => count} unless count == 0; res
-        }.sort{|a,b| a[type] <=> b[type]}
+        Hash[Mailjunk.indexed_keys(type).inject({}){|res, key|
+          res[key] = Mailjunk.count(options.merge(type => key)); res
+        }.sort]
       end
     end
 
