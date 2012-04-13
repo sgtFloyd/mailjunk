@@ -1,10 +1,16 @@
-.chart div {
-   font: 10px sans-serif;
-   background-color: steelblue;
-   text-align: right;
-   padding: 3px;
-   margin: 1px;
-   color: white;
+body {
+   font-family: Arial, sans-serif;
+}
+h1 {
+   color: #7A1026;
+   text-align: center;
+}
+h1 .more {
+   font-size: 60%;
+}
+
+h2 {
+   
 }
 
 path {
@@ -20,4 +26,6 @@ line {
 text {
     font-family: Arial;
     font-size: 9pt;
+}
+.point-label {
 }

@@ -1,6 +1,6 @@
 var data; // a global
 
-d3.json("http://stampyday.pp.local:4567/by_day", function(json) {
+d3.json("http://stampyday.pp.local:4567/by_month", function(json) {
     data = json['days'];
     arr = Array(data.length);
     for (var key in data) {
@@ -16,7 +16,7 @@ d3.json("http://stampyday.pp.local:4567/by_day", function(json) {
         y = d3.scale.linear().domain([0, d3.max(data)]).range([0 + margin, h - margin]),
         x = d3.scale.linear().domain([0, data.length]).range([0 + margin, w - margin]);
 
-    var vis = d3.select("body")
+    var vis = d3.select("#bymonth")
         .append("svg:svg")
         .attr("width", w)
         .attr("height", h)
