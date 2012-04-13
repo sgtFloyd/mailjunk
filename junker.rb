@@ -38,8 +38,10 @@ end
 
 def process_time(uid, row)
   t = Time.parse(row[COLUMN[:timeLogged]])
-  day = "#{t.year}.#{t.month}.#{t.day}"
-  mon = "#{t.year}.#{t.month}"
+  month_s = t.month < 10 ? "0#{t.month}" : t.month
+  day_s = t.day < 10 ? "0#{t.day}" : t.day
+  day = "#{t.year}.#{month_s}.#{day_s}"
+  mon = "#{t.year}.#{month_s}"
 
   $redis.sadd("mailjunk:days",   day)
   $redis.sadd("mailjunk:months", mon)
