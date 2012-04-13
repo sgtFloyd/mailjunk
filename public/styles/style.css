@@ -1,0 +1,23 @@
+.chart div {
+   font: 10px sans-serif;
+   background-color: steelblue;
+   text-align: right;
+   padding: 3px;
+   margin: 1px;
+   color: white;
+}
+
+path {
+    stroke: steelblue;
+    stroke-width: 2;
+    fill: none;
+}
+
+line {
+    stroke: black;
+}
+
+text {
+    font-family: Arial;
+    font-size: 9pt;
+}
