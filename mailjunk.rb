@@ -17,8 +17,10 @@ end
 get '/by_:type' do
   content_type :json
   type = params.delete('type')
+  results = Mailjunk.count_by(type, params)
   { :query => ["by_#{type}"] + Mailjunk.parse_opts(params),
-    Mailjunk.plural(type) => Mailjunk.count_by(type, params)
+    :count => results.count,
+    Mailjunk.plural(type) => results
   }.to_json
 end
 
@@ -39,6 +41,7 @@ class Mailjunk
     #   :month  => '2011.4'
     #   :status => '2.0.0'
     #   :domain => 'gmail.com'
+    #
     def parse_opts(options)
       options.inject([]){|keys, (key, val)|
         next(keys) unless AVAILABLE_KEYS.include?(key.to_sym)
@@ -50,6 +53,7 @@ class Mailjunk
     #
     #   compound_key(:result => 'bounced', :status => '4.0.0', :domain => 'gmail.com', :month  => '2011.2')
     #   => "mailjunk:result:bounced&status:4.0.0&domain:gmail.com&month:2011.2"
+    #
     def compound_key(options)
       options.inject("#{PREFIX}:"){|key, (k,v)|
         next(key) unless AVAILABLE_KEYS.include?(k.to_sym)
