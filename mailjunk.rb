@@ -84,7 +84,8 @@ class Mailjunk
         }
       else
         Hash[Mailjunk.indexed_keys(type).inject({}){|res, key|
-          res[key] = Mailjunk.count(options.merge(type => key)); res
+          count = Mailjunk.count(options.merge(type => key))
+          res[key] = count unless count == 0; res
         }.sort]
       end
     end

@@ -65,6 +65,7 @@ end
 
 # generate unique id for given row
 def uid(row)
+  # TODO: use incrememtal ids instead of hash
   Digest::SHA1.hexdigest(row.to_s)
 end
 
