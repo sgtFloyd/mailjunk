@@ -51,11 +51,11 @@ class Mailjunk
 
     # combine options into a unique compound key
     #
-    #   compound_key(:result => 'bounced', :status => '4.0.0', :domain => 'gmail.com', :month  => '2011.2')
-    #   => "mailjunk:result:bounced&status:4.0.0&domain:gmail.com&month:2011.2"
+    #   compound_key(:result => 'bounced', :status => '4.0.0', :domain => 'gmail.com', :month  => '2011.02')
+    #   => "mailjunk:result:bounced&status:4.0.0&domain:gmail.com&month:2011.02"
     #
     def compound_key(options)
-      options.inject("#{PREFIX}:"){|key, (k,v)|
+      Hash[options.sort].inject("#{PREFIX}:"){|key, (k,v)|
         next(key) unless AVAILABLE_KEYS.include?(k.to_sym)
         key << "#{k}:#{v}&"
       }.chomp('&')
