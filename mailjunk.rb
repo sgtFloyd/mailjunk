@@ -32,13 +32,13 @@ class Mailjunk
 
     # parse options into keys for redis sets
     #
-    #   parse_opts(:result => 'bounced', :status => '4.0.0', :domain => 'gmail.com', :month  => '2011.2')
-    #   => ['mailjunk:bounced', 'mailjunk:status:4.0.0', 'mailjunk:domain:gmail.com', 'mailjunk:month:2011.2']
+    #   parse_opts(:result => 'bounced', :status => '4.0.0', :domain => 'gmail.com', :month  => '2011.02')
+    #   => ['mailjunk:bounced', 'mailjunk:status:4.0.0', 'mailjunk:domain:gmail.com', 'mailjunk:month:2011.02']
     #
     # available keys:
     #   :result => 'delivered' || 'bounced'
-    #   :day    => '2011.4.19'
-    #   :month  => '2011.4'
+    #   :day    => '2011.04.19'
+    #   :month  => '2011.04'
     #   :status => '2.0.0'
     #   :domain => 'gmail.com'
     #
